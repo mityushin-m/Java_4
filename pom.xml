@@ -4,13 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.lab</groupId>
-  <artifactId>intcontainer</artifactId>
+  <groupId>com.lab4</groupId>
+  <artifactId>csv-reader</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>intcontainer</name>
-  <url>http://www.example.com</url>
+  <name>csv-reader</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,11 +29,6 @@
       <artifactId>junit-jupiter-params</artifactId>
       <version>5.7.1</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.opencsv</groupId>
-      <artifactId>opencsv</artifactId>
-      <version>5.9</version>
     </dependency>
   </dependencies>
 
