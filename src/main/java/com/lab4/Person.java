@@ -5,11 +5,11 @@ public class Person {
     private String name;
     private String gender;
     private String birthDate;
-    private String division;
+    private Division division;
     private String salary;
 
     public Person(String id, String name, String gender, String birthDate, 
-                  String division, String salary) {
+                  Division division, String salary) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -22,14 +22,14 @@ public class Person {
     public String getName() { return name; }
     public String getGender() { return gender; }
     public String getBirthDate() { return birthDate; }
-    public String getDivision() { return division; }
+    public Division getDivision() { return division; }
     public String getSalary() { return salary; }
     
     public void setId(String id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setGender(String gender) { this.gender = gender; }
     public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
-    public void setDivision(String division) { this.division = division; }
+    public void setDivision(Division division) { this.division = division; }
     public void setSalary(String salary) { this.salary = salary; }
     
     @Override
@@ -39,7 +39,8 @@ public class Person {
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthDate='" + birthDate + '\'' +
-                ", division='" + division + '\'' +
+                ", divisionName='" + division.getName() + '\'' +
+                ", divisionId='" + division.getId() + '\'' +
                 ", salary='" + salary + '\'' +
                 '}';
     }

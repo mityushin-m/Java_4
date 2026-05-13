@@ -11,6 +11,7 @@ public class CsvReader {
     
     public static List<Person> readPersons(String csvFilePath, char separator) {
     	List<Person> persons = new ArrayList<>();
+    	List<Division> divisions = new ArrayList<>();
         InputStream in = CsvReader.class.getClassLoader().getResourceAsStream(csvFilePath);
         
         if (in == null) {
@@ -34,26 +35,46 @@ public class CsvReader {
                 
                 String[] columns = line.split(String.valueOf(separator));
                 if (columns.length >= 6) {
+                	String divisionName = columns[4].trim();
+                    
+                    Division division = findDivision(divisions, divisionName);
+                    
+                    if (division == null) {
+                        division = new Division(divisionName);
+                        divisions.add(division);
+                    }
+                	
                     Person person = new Person(
                         columns[0].trim(),  // id
                         columns[1].trim(),  // name
                         columns[2].trim(),  // gender
                         columns[3].trim(),  // birthDate
-                        columns[4].trim(),  // division
+                        division,  // division
                         columns[5].trim()   // salary
                     );
-                    persons.add(person);}
+                    persons.add(person);
+                }
                 else {
                     System.out.println("Пропущена строка " + lineNum + 
                                      ": недостаточно колонок (" + columns.length + ")");
                 }
             }
             System.out.println("Всего считано строк: " + persons.size());
+            System.out.println("Уникальных подразделений: " + divisions.size());
             
         } catch (Exception e) {
             System.out.println("Ошибка: " + e.getMessage());
         }
         return persons;
+    }
+    
+    private static Division findDivision(List<Division> divisions, String name) {
+        for (Division d : divisions) {
+            if (d.getName().equals(name)) {
+                return d;
+            }
+        }
+        return null;
     }
     
     public static void printPersons(List<Person> persons, int limit) {
